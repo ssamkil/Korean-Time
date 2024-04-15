@@ -20,14 +20,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen()
 
-        setContent {
+        /*setContent {
             KoreanTimeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     Greeting("Android")
                 }
             }
-        }
+        }*/
+        setContentView(R.layout.activity_main)
     }
 }
 
