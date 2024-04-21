@@ -17,6 +17,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.koreantime.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    lateinit var dbHelper: DBHelper
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -30,6 +31,12 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, RegisterActivity::class.java)
         btn_register.setOnClickListener{startActivity(intent)}
 
+        dbHelper = DBHelper(applicationContext)
+        var db = dbHelper.writableDatabase
+
+        btn_login.setOnClickListener{
+
+        }
 
     }
 }

@@ -8,21 +8,24 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
     companion object {
         private val DATABASE_VERSION = 1
         private val DATABASE_NAME = "KoreanTimeDatabase"
-        private val TABLE_CONTACTS = "user"
+        private val TABLE_NAME = "user"
         private val KEY_NAME = "name"
         private val KEY_UNAME = "username"
         private val KEY_PWD = "password"
     }
 
-    override fun onCreate(db: SQLiteDatabase?) {
-        val newtb = ("CREATE TABLE " + TABLE_CONTACTS + "("
+    override fun onCreate(db: SQLiteDatabase) {
+        val sql: String = ("CREATE TABLE IF NOT EXISTS " + TABLE_NAME +
+                " (_id integer primary key autoincrement, "
                 + KEY_NAME + " TEXT," + KEY_UNAME + " TEXT,"
-                + KEY_PWD + " TEXT" + ")")
-        db?.execSQL(newtb)
+                + KEY_PWD + " TEXT)")
+        db.execSQL(sql)
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db!!.execSQL("DROP TABLE IF EXISTS" + TABLE_CONTACTS)
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        val sql: String = ("DROP TABLE IF EXISTS " + TABLE_NAME)
+
+        db.execSQL(sql)
         onCreate(db)
     }
 }
