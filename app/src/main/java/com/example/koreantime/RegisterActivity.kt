@@ -29,6 +29,14 @@ class RegisterActivity : AppCompatActivity() {
             var name = name_space.text.toString()
             var username = username_space.text.toString()
             var password = password_space.text.toString()
+            var passwordConfirm = binding.confirmPassword.text.toString()
+            var ad = AlertDialog.Builder(this)
+            if(password != passwordConfirm) {
+                ad.setTitle("Message")
+                ad.setMessage("Passwords do not match")
+                ad.setPositiveButton("OK", null)
+                ad.show()
+            }
             if(name.isNotEmpty() && username.isNotEmpty() && password.isNotEmpty()){
                 var data = ContentValues()
                 data.put("name", name)
@@ -36,7 +44,6 @@ class RegisterActivity : AppCompatActivity() {
                 data.put("password", password)
                 var rs:Long = db.insert("user", null, data)
                 if(!rs.equals(-1)) {
-                    var ad = AlertDialog.Builder(this)
                     ad.setTitle("Message")
                     ad.setMessage("Account registered successfully")
                     ad.setPositiveButton("OK", null)
@@ -45,7 +52,6 @@ class RegisterActivity : AppCompatActivity() {
                     username_space.text.clear()
                     password_space.text.clear()
                 } else {
-                    var ad = AlertDialog.Builder(this)
                     ad.setTitle("Message")
                     ad.setMessage("Record not added")
                     ad.setPositiveButton("OK", null)
