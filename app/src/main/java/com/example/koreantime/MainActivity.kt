@@ -2,6 +2,7 @@ package com.example.koreantime
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -22,20 +23,36 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         installSplashScreen()
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        var binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        var username_space = binding.username
+        var password_space = binding.password
 
-        val btn_register = binding.register
-        val btn_login    = binding.login
+        var btn_register = binding.register
+        var btn_login    = binding.login
 
-        val intent = Intent(this, RegisterActivity::class.java)
+        var intent = Intent(this, RegisterActivity::class.java)
         btn_register.setOnClickListener{startActivity(intent)}
 
         dbHelper = DBHelper(applicationContext)
-        var db = dbHelper.writableDatabase
+        var db = dbHelper.readableDatabase
 
         btn_login.setOnClickListener{
-
+            var username = username_space.text.toString()
+            var password = password_space.text.toString()
+            if (username.trim().isEmpty() || password.trim().isEmpty()) {
+                Toast.makeText(this, "아이디 혹은 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
+            } else {
+                val query = "SELECT * FROM user WHERE username = ? AND password = ?"
+                val rs = db.rawQuery(query, arrayOf(username, password))
+                if (rs.count <= 0) {
+                    Toast.makeText(this, "아이디 혹은 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
+                }
+                /*val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)*/
+            }
         }
 
     }
