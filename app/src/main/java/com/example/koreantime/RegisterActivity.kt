@@ -52,7 +52,7 @@ class RegisterActivity : AppCompatActivity() {
                     data.put("name", name)
                     data.put("username", username)
                     data.put("password", password)
-                    var rs:Long = db.insert("user", null, data)
+                    var rs = db.insert("user", null, data)
                     if(!rs.equals(-1)) {
                         Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
                         startActivity(intent)

@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.koreantime.ui.theme.KoreanTimeTheme
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.koreantime.databinding.ActivityMainBinding
+import com.kakao.sdk.common.KakaoSdk
 
 class MainActivity : AppCompatActivity() {
     lateinit var dbHelper: DBHelper
@@ -55,21 +56,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-    }
-}
+        KakaoSdk.init(this, "{b9756b5fd3fa6a0d308496b22423130f}")
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-            text = "Hello $name!",
-            modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    KoreanTimeTheme {
-        Greeting("Android")
     }
 }
