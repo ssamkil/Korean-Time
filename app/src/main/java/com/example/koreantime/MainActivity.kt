@@ -50,9 +50,9 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "아이디 혹은 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
+                    intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
                 }
-                /*val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)*/
             }
         }
 
