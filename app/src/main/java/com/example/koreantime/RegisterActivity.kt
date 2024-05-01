@@ -3,6 +3,7 @@ package com.example.koreantime
 import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -10,17 +11,24 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.koreantime.databinding.ActivityRegisterBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         var binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        auth = FirebaseAuth.getInstance()
+
         var btn_create = binding.create
         var btn_back   = binding.back
         var name_space = binding.name
-        var username_space = binding.username
+        var email_space = binding.email
         var password_space = binding.password
 
         var dbHelper = DBHelper(applicationContext)
@@ -30,7 +38,7 @@ class RegisterActivity : AppCompatActivity() {
 
         btn_create.setOnClickListener{
             var name = name_space.text.toString()
-            var username = username_space.text.toString()
+            var email = email_space.text.toString()
             var password = password_space.text.toString()
             var passwordConfirm = binding.confirmPassword.text.toString()
             var ad = AlertDialog.Builder(this)
@@ -39,8 +47,17 @@ class RegisterActivity : AppCompatActivity() {
                 ad.setMessage("비밀번호가 일치하지 않습니다")
                 ad.setPositiveButton("OK", null)
                 ad.show()
-            } else if(name.isNotEmpty() && username.isNotEmpty() && password.isNotEmpty()){
-                var query = "SELECT username FROM user WHERE username = ?"
+            } else if(name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()){
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                /*var query = "SELECT username FROM user WHERE username = ?"
                 var qr = db.rawQuery(query, arrayOf(username))
                 if (qr.count > 0) {
                     ad.setTitle("Message")
@@ -57,7 +74,7 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
                         startActivity(intent)
                     }
-                }
+                }*/
             } else {
                 Toast.makeText(this, "모든 정보를 입력해주세요", Toast.LENGTH_SHORT).show()
             }
