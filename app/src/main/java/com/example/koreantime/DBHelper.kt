@@ -28,4 +28,5 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
         db.execSQL(sql)
         onCreate(db)
     }
+
 }

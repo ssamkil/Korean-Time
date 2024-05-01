@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.dagger.hilt.android") version "2.44" apply false
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -63,6 +65,21 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("com.kakao.sdk:v2-all:2.20.1")
     implementation("com.kakao.maps.open:android:2.9.5")
+    //DataStore
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+    //Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
+    //Hilt
+    implementation("com.google.dagger:hilt-android:2.44")
+    annotationProcessor("com.google.dagger:hilt-compiler:2.44")
+    //OkHTTP
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    //Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

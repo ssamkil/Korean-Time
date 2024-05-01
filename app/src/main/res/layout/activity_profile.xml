@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <TextView
+        android:id="@+id/myName"
+        android:layout_width="275dp"
+        android:layout_height="38dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="203dp" />
+
+    <TextView
+        android:id="@+id/myUsername"
+        android:layout_width="275dp"
+        android:layout_height="38dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="133dp" />
+
+    <TextView
+        android:id="@+id/myPassword"
+        android:layout_width="275dp"
+        android:layout_height="38dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="57dp" />
+
+    <Button
+        android:id="@+id/myPasswordChange"
+        android:layout_width="275dp"
+        android:layout_height="38dp"
+        android:text="Button"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="593dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

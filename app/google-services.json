@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "952323411611",
+    "project_id": "koreantime-33f1a",
+    "storage_bucket": "koreantime-33f1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952323411611:android:ad7d520bf5ea57a5a2003e",
+        "android_client_info": {
+          "package_name": "com.example.koreantime"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD99qhjJhM4Vk7ol3frkKYVKjGwV-Mb4Qg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
