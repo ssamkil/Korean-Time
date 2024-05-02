@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
-                        intent = Intent(this, ProfileActivity::class.java)
+                        intent = Intent(this, MapActivity::class.java)
                         startActivity(intent)
                     } else {
                         Toast.makeText(this, "이메일 혹은 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             }*/
         }
 
-        KakaoSdk.init(this, "{b9756b5fd3fa6a0d308496b22423130f}")
+        KakaoSdk.init(this, "b9756b5fd3fa6a0d308496b22423130f")
 
     }
 }
