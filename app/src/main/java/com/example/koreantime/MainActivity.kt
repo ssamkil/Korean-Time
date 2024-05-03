@@ -18,6 +18,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.koreantime.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.kakao.sdk.common.KakaoSdk
+import com.naver.maps.map.NaverMapSdk
 
 class MainActivity : AppCompatActivity() {
     lateinit var dbHelper: DBHelper
@@ -70,7 +71,10 @@ class MainActivity : AppCompatActivity() {
             }*/
         }
 
+        // kakao client call
         KakaoSdk.init(this, "b9756b5fd3fa6a0d308496b22423130f")
-
+        // naver client call
+        NaverMapSdk.getInstance(this).client =
+            NaverMapSdk.NaverCloudPlatformClient("fkxj9cn3va")
     }
 }
