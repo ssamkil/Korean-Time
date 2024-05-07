@@ -8,68 +8,77 @@
     tools:context=".ProfileActivity">
 
     <TextView
-        android:id="@+id/myName"
-        android:layout_width="287dp"
-        android:layout_height="38dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="259dp" />
-
-    <TextView
         android:id="@+id/myEmail"
-        android:layout_width="287dp"
-        android:layout_height="38dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="223dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="348dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="174dp" />
-
-    <TextView
-        android:id="@+id/myPassword"
-        android:layout_width="287dp"
-        android:layout_height="38dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="91dp" />
-
-    <Button
-        android:id="@+id/myPasswordChange"
-        android:layout_width="287dp"
-        android:layout_height="38dp"
-        android:text="비밀번호 변경"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="355dp" />
-
-    <Button
-        android:id="@+id/myBack"
-        android:layout_width="128dp"
-        android:layout_height="42dp"
-        android:text="뒤로가기"
-        tools:layout_editor_absoluteX="221dp"
-        tools:layout_editor_absoluteY="613dp" />
-
-    <TextView
-        android:id="@+id/password_string"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="비밀번호"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="231dp" />
+        app:layout_constraintBottom_toTopOf="@+id/myBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/name_string"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
         android:text="이름"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="147dp" />
+        app:layout_constraintBottom_toTopOf="@+id/myName"
+        app:layout_constraintStart_toStartOf="@+id/myName"
+        app:layout_constraintTop_toBottomOf="@+id/myEmail" />
+
+    <TextView
+        android:id="@+id/myName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="257dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/myPasswordChange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_string" />
 
     <TextView
         android:id="@+id/email_string"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="189dp"
+        android:layout_marginBottom="13dp"
         android:text="이메일"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="62dp" />
+        app:layout_constraintBottom_toTopOf="@+id/myEmail"
+        app:layout_constraintStart_toStartOf="@+id/myEmail"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/myPasswordChange"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="76dp"
+        android:text="비밀번호 변경"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/myBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myName" />
+
+    <Button
+        android:id="@+id/myBack"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="76dp"
+        android:text="뒤로가기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/myPasswordChange"
+        app:layout_constraintTop_toBottomOf="@+id/myEmail" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

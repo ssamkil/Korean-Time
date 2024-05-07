@@ -1,5 +1,6 @@
 package com.example.koreantime
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.koreantime.databinding.ActivityProfileBinding
@@ -16,9 +17,17 @@ class ProfileActivity : AppCompatActivity() {
 
         var name = binding.myName
         var email = binding.myEmail
-        var password = binding.myPassword
         var changePassword = binding.myPasswordChange
+        var back = binding.myBack
 
         email.text = auth.currentUser?.email
+        name.text = auth.currentUser?.displayName
+
+        changePassword.setOnClickListener{
+            var intent = Intent(this, ChangePasswordActivity::class.java)
+            startActivity(intent)
+        }
+
+        back.setOnClickListener{finish()}
     }
 }
