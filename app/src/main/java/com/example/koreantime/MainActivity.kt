@@ -1,7 +1,11 @@
 package com.example.koreantime
 
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,8 +21,9 @@ import com.example.koreantime.ui.theme.KoreanTimeTheme
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.koreantime.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.kakao.sdk.common.KakaoSdk
+import com.kakao.vectormap.KakaoMapSdk
 import com.naver.maps.map.NaverMapSdk
+import java.security.MessageDigest
 
 class MainActivity : AppCompatActivity() {
     lateinit var dbHelper: DBHelper
@@ -38,8 +43,8 @@ class MainActivity : AppCompatActivity() {
         var intent = Intent(this, RegisterActivity::class.java)
         btn_register.setOnClickListener{startActivity(intent)}
 
-        dbHelper = DBHelper(applicationContext)
-        var db = dbHelper.readableDatabase
+        /*dbHelper = DBHelper(applicationContext)
+        var db = dbHelper.readableDatabase*/
 
         btn_login.setOnClickListener{
             var email = email_space.text.toString()
@@ -71,10 +76,27 @@ class MainActivity : AppCompatActivity() {
             }*/
         }
 
+        fun getKakaoMapHashKey(context: Context) {
+            try {
+                val packageName = context.packageName
+                val packageInfo = context.packageManager.getPackageInfo(
+                    packageName,
+                    PackageManager.GET_SIGNATURES
+                )
+                for (signature in packageInfo.signatures) {
+                    val md = MessageDigest.getInstance("SHA")
+                    md.update(signature.toByteArray())
+                    val hashKey = Base64.encodeToString(md.digest(), Base64.NO_WRAP)
+                    Log.d("KakaoMap Hash Key", hashKey)
+                }
+            } catch (e: Exception) {
+                Log.e("KakaoMap Hash Key", "Error: ${e.message}")
+            }
+        }
+
+        getKakaoMapHashKey(this)
+
         // kakao client call
-        KakaoSdk.init(this, "b9756b5fd3fa6a0d308496b22423130f")
-        // naver client call
-        NaverMapSdk.getInstance(this).client =
-            NaverMapSdk.NaverCloudPlatformClient("fkxj9cn3va")
+        KakaoMapSdk.init(this, "b9756b5fd3fa6a0d308496b22423130f")
     }
 }
